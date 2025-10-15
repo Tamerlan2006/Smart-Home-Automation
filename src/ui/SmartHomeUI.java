@@ -24,7 +24,7 @@ public class SmartHomeUI {
     public void start() {
         boolean running = true;
         while (running) {
-            System.out.println("\n====== SMART HOME MENU ======");
+            System.out.println("\n====== SMART HOME UI ======");
             System.out.println("1. Turn ON Light");
             System.out.println("2. Turn OFF Light");
             System.out.println("3. Turn ON Music");
@@ -85,7 +85,7 @@ public class SmartHomeUI {
         try {
             return sc.nextInt();
         } catch (InputMismatchException e) {
-            sc.nextLine(); // очищаем ввод
+            sc.nextLine();
             System.out.println("⚠️ Invalid input. Please enter a number.");
             return -1;
         }
