@@ -24,7 +24,7 @@ public class SmartHomeUI {
     public void start() {
         boolean running = true;
         while (running) {
-            System.out.println("\n====== SMART HOME UI ======");
+            System.out.println("\n====== Welcome to Smart Home Automation System! ======");
             System.out.println("1. Turn ON Light");
             System.out.println("2. Turn OFF Light");
             System.out.println("3. Turn ON Music");
