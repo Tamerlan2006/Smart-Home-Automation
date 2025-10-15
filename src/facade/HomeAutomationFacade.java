@@ -8,8 +8,7 @@ public class HomeAutomationFacade {
     private Thermostat thermostat;
     private SecurityCamera camera;
 
-    public HomeAutomationFacade(Light light, MusicSystem musicSystem,
-                                Thermostat thermostat, SecurityCamera camera) {
+    public HomeAutomationFacade(Light light, MusicSystem musicSystem, Thermostat thermostat, SecurityCamera camera) {
         this.light = light;
         this.musicSystem = musicSystem;
         this.thermostat = thermostat;
