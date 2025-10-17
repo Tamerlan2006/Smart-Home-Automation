@@ -12,7 +12,6 @@ public class Main {
         Thermostat coreThermostat = new Thermostat();
         SecurityCamera coreCamera = new SecurityCamera();
 
-        // decorate devices:
         // light: voice + energy saving + analytics
         Device decoratedLight = new AnalyticsDecorator(new VoiceControlDecorator(new EnergySavingDecorator(coreLight)));
 
@@ -25,7 +24,6 @@ public class Main {
         // camera: analytics + remote
         Device decoratedCamera = new AnalyticsDecorator(new RemoteAccessDecorator(coreCamera));
 
-        // facade works with decorated devices (so modes, status, etc. reflect decorations)
         HomeAutomationFacade facade = new HomeAutomationFacade(decoratedLight, decoratedMusic, decoratedThermostat, decoratedCamera);
 
         Logger.log("SmartHome started.");

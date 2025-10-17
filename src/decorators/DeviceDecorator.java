@@ -2,10 +2,7 @@ package decorators;
 
 import devices.Device;
 
-/**
- * Базовый декоратор — делегирует вызовы декорируемому устройству.
- * Также переопределяет опциональные методы интерфейса, перенаправляя к decoratedDevice.
- */
+
 public abstract class DeviceDecorator implements Device {
     protected Device decoratedDevice;
 
