@@ -39,4 +39,10 @@ public abstract class DeviceDecorator implements Device {
 
     @Override
     public void disarm() { decoratedDevice.disarm(); }
+
+    // delegate the two-arg temperature method so concrete decorators don't need to implement it
+    @Override
+    public void setTemperature(double t, boolean silent) {
+        decoratedDevice.setTemperature(t, silent);
+    }
 }

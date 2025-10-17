@@ -1,16 +1,10 @@
 package devices;
 
-/**
- * Common device interface.
- * Добавлены default методы для device-specific операций (чтобы фасад мог работать только с Device интерфейсом).
- */
 public interface Device {
     void operate();
     void turnOn();
     void turnOff();
 
-    // Optional operations with default implementations that бросают UnsupportedOperationException,
-    // но конкретные устройства переопределяют их.
     default void setVolume(int v) { throw new UnsupportedOperationException("setVolume not supported"); }
     default int getVolume() { throw new UnsupportedOperationException("getVolume not supported"); }
 
@@ -19,4 +13,9 @@ public interface Device {
 
     default void arm() { throw new UnsupportedOperationException("arm not supported"); }
     default void disarm() { throw new UnsupportedOperationException("disarm not supported"); }
+
+    // previously abstract — make it a default to avoid forcing all devices to implement it
+    default void setTemperature(double t, boolean silent) {
+        throw new UnsupportedOperationException("setTemperature(t, silent) not supported");
+    }
 }

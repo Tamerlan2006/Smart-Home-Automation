@@ -51,7 +51,6 @@ public class CommandHandler {
         System.out.println("Unknown command (type 'help' for suggestions).");
     }
 
-    // numeric menu handler (returns false if user chose exit)
     public boolean handleMenuChoice(int choice) {
         switch (choice) {
             case 1 -> facade.turnOnLight();
@@ -75,7 +74,7 @@ public class CommandHandler {
                 int opt = readIntSafe();
                 if (opt == 1) facade.armCamera();
                 else if (opt == 2) facade.disarmCamera();
-                else System.out.println("Invalid choice.");
+                else System.out.println("Invalid option.");
             }
             case 8 -> facade.startPartyMode();
             case 9 -> facade.activateNightMode();

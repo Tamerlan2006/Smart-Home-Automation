@@ -3,10 +3,6 @@ package facade;
 import devices.Device;
 import utils.Logger;
 
-/**
- * Фасад оперирует Device-интерфейсами (декорированными), чтобы скрыть детали реализации.
- * Использует возможности default-методов Device для device-specific команд.
- */
 public class HomeAutomationFacade {
     private Device light;
     private Device music;

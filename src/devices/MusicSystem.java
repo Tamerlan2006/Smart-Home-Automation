@@ -35,5 +35,10 @@ public class MusicSystem implements Device {
         return volume;
     }
 
+    @Override
+    public void setTemperature(double t, boolean silent) {
+
+    }
+
     public boolean isOn() { return isOn; }
 }

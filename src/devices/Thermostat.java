@@ -46,15 +46,16 @@ public class Thermostat implements Device {
 
     @Override
     public void setTemperature(double t, boolean silent) {
-        // Not part of interface; kept for compatibility - not used
+        // kept for compatibility; not used elsewhere
+        setTemperature(t);
+        if (!silent) System.out.println("Temperature set (silent=false) to " + t);
     }
 
     public void setMode(String mode) {
         if ("eco".equalsIgnoreCase(mode) || "comfort".equalsIgnoreCase(mode)) {
             this.mode = mode.toLowerCase();
-            System.out.println("Thermostat mode set to: " + this.mode);
         } else {
-            System.out.println("Invalid mode. Use: eco / comfort.");
+            System.out.println("Unknown thermostat mode: " + mode + ". Keeping mode: " + this.mode);
         }
     }
 

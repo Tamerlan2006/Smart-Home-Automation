@@ -21,6 +21,11 @@ public class Light implements Device {
         System.out.println("Light turned OFF.");
     }
 
+    @Override
+    public void setTemperature(double t, boolean silent) {
+
+    }
+
     // helper for other code
     public boolean isOn() { return isOn; }
 }
