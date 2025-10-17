@@ -22,14 +22,19 @@ public class SecurityCamera implements Device {
         System.out.println("Security camera turned OFF.");
     }
 
+    @Override
     public void arm() {
         if (!isOn) turnOn();
         armed = true;
         System.out.println("Camera armed (security enabled).");
     }
 
+    @Override
     public void disarm() {
         armed = false;
         System.out.println("Camera disarmed.");
     }
+
+    public boolean isArmed(){ return armed; }
+    public boolean isOn(){ return isOn; }
 }

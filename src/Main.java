@@ -1,22 +1,39 @@
 import devices.*;
 import decorators.*;
-import facade.*;
+import facade.HomeAutomationFacade;
 import ui.SmartHomeUI;
+import utils.Logger;
 
 public class Main {
     public static void main(String[] args) {
-        Light light = new Light();
-        MusicSystem music = new MusicSystem();
-        Thermostat thermostat = new Thermostat();
-        SecurityCamera camera = new SecurityCamera();
+        // core devices
+        Light coreLight = new Light();
+        MusicSystem coreMusic = new MusicSystem();
+        Thermostat coreThermostat = new Thermostat();
+        SecurityCamera coreCamera = new SecurityCamera();
 
-        Device smartLight = new VoiceControlDecorator(new EnergySavingDecorator(light));
-        Device smartMusic = new RemoteAccessDecorator(new EnergySavingDecorator(music));
+        // decorate devices:
+        // light: voice + energy saving + analytics
+        Device decoratedLight = new AnalyticsDecorator(new VoiceControlDecorator(new EnergySavingDecorator(coreLight)));
 
-        HomeAutomationFacade facade = new HomeAutomationFacade(light, music, thermostat, camera);
+        // music: remote + energy + analytics
+        Device decoratedMusic = new AnalyticsDecorator(new RemoteAccessDecorator(new EnergySavingDecorator(coreMusic)));
+
+        // thermostat: analytics only (could add other decorators if needed)
+        Device decoratedThermostat = new AnalyticsDecorator(coreThermostat);
+
+        // camera: analytics + remote
+        Device decoratedCamera = new AnalyticsDecorator(new RemoteAccessDecorator(coreCamera));
+
+        // facade works with decorated devices (so modes, status, etc. reflect decorations)
+        HomeAutomationFacade facade = new HomeAutomationFacade(decoratedLight, decoratedMusic, decoratedThermostat, decoratedCamera);
+
+        Logger.log("SmartHome started.");
 
         // UI
-        SmartHomeUI ui = new SmartHomeUI(light, music, thermostat, camera, facade);
+        SmartHomeUI ui = new SmartHomeUI(facade);
         ui.start();
+
+        Logger.log("SmartHome stopped.");
     }
 }

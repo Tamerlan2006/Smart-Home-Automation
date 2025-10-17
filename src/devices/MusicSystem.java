@@ -24,12 +24,16 @@ public class MusicSystem implements Device {
         System.out.println("Music system turned OFF.");
     }
 
-    public void setVolume(int volume) {
-        this.volume = Math.max(0, Math.min(volume, 100));
+    @Override
+    public void setVolume(int v) {
+        this.volume = Math.max(0, Math.min(v, 100));
         System.out.println("Volume set to: " + this.volume);
     }
 
+    @Override
     public int getVolume() {
         return volume;
     }
+
+    public boolean isOn() { return isOn; }
 }

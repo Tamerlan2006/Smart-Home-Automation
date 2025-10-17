@@ -20,4 +20,7 @@ public class Light implements Device {
         isOn = false;
         System.out.println("Light turned OFF.");
     }
+
+    // helper for other code
+    public boolean isOn() { return isOn; }
 }

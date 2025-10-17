@@ -26,9 +26,27 @@ public class Thermostat implements Device {
         System.out.println("Thermostat turned OFF.");
     }
 
+    @Override
     public void setTemperature(double temp) {
+        // validation inside
         this.temperature = Math.max(10, Math.min(temp, 30));
+        if (!isOn) {
+            // IMPORTANT: Setting temperature should also turn thermostat ON (as requested)
+            turnOn();
+        }
         System.out.println("Temperature set to " + this.temperature + "°C.");
+    }
+
+    @Override
+    public void enableEcoMode() {
+        setMode("eco");
+        if (!isOn) turnOn();
+        System.out.println("Thermostat eco mode activated.");
+    }
+
+    @Override
+    public void setTemperature(double t, boolean silent) {
+        // Not part of interface; kept for compatibility - not used
     }
 
     public void setMode(String mode) {
@@ -40,9 +58,7 @@ public class Thermostat implements Device {
         }
     }
 
-    public void enableEcoMode() {
-        setMode("eco");
-        if (!isOn) turnOn();
-        System.out.println("Thermostat eco mode activated.");
-    }
+    public String getMode() { return mode; }
+    public double getTemperature() { return temperature; }
+    public boolean isOn(){ return isOn; }
 }
